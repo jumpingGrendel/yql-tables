@@ -6,7 +6,7 @@
     <sampleQuery>UPDATE {table} SET message='Hello, iOs user' WHERE deviceId='758327457457245724524' AND AppKey='392834082309' AND MasterSecret='8098098098'</sampleQuery>
   </meta>
   <bindings>
-    <update itemPath="" produces="XML">
+    <update itemPath="" produces="JSON">
       <urls>
         <url>https://go.urbanairship.com/api/push/</url>
       </urls>
@@ -17,6 +17,17 @@
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
         <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
       </inputs>
+      <execute>
+        <![CDATA[ 
+          y.include("http://yqlblog.net/samples/base64.js"); 
+          var authheader = "Basic "+Base64.encode(appKey+":"+masterSecret);
+          var parameters = [];
+          parameters.push({"device_tokens": device_tokens});
+          parameters.push({"aps": {type: "message"}});
+          response.object = request.header("Authorization",authheader).post(parameters).response;
+          });
+        ]]>
+      </execute>
     </update>
   </bindings>
 </table>
