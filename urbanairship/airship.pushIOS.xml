@@ -23,8 +23,7 @@
           var parameters = {};
           parameters.device_tokens = [device_tokens];
           parameters.aps = {};
-          parameters.aps[type] = message;
-          y.log(parameters);
+          parameters.aps[type] = unescape(message);
           
           request.header("Authorization",authheader);
           request.contentType('application/json');
