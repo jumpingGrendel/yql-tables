@@ -31,5 +31,3 @@
     </select>
   </bindings>
 </table>
-
-<!--update mypush where device_tokens='4fff21f1e529328bafe1f0baa2bc411109c89ac6247b47eb2fecd4cd9ef73cd6' and type="alert" and message="hi there" and appKey="cigxJIYGRx2xu78IFnOWEQ" and masterSecret="8Ci5Ckt-RF6ODdRouOrDVQ"-->
