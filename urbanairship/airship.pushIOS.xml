@@ -6,7 +6,7 @@
     <sampleQuery>UPDATE {table} SET message='Hello, iOs user' WHERE deviceId='758327457457245724524' AND AppKey='392834082309' AND MasterSecret='8098098098'</sampleQuery>
   </meta>
   <bindings>
-    <select itemPath="devices" produces="JSON">
+    <update itemPath="devices" produces="JSON">
       <urls>
         <url>https://go.urbanairship.com/api/push/</url>
       </urls>
@@ -28,6 +28,6 @@
           response.object = request.post(parameters);
         ]]>
       </execute>
-    </select>
+    </update>
   </bindings>
 </table>
