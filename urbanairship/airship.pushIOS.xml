@@ -22,6 +22,7 @@
           var authheader = "Basic "+y.crypto.encodeBase64(appKey+":"+masterSecret);
           var parameters = {};
           parameters.device_tokens = [device_tokens];
+          parameters.aps = {};
           parameters.aps[type] = message;
           request.header("Authorization",authheader);
           request.contentType('application/json');
