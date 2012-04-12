@@ -25,7 +25,6 @@
           parameters.push({"device_tokens": device_tokens});
           parameters.push({"aps": {type: "message"}});
           response.object = request.header("Authorization",authheader).post(parameters).response;
-          });
         ]]>
       </execute>
     </select>
