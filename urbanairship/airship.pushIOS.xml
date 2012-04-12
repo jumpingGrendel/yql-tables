@@ -24,10 +24,8 @@
           parameters.device_tokens = [device_tokens];
           parameters.aps = {"alert": "message"};
           request.header("Authorization",authheader);
-          request.contentType('application/json')
-          response.object = request.post({
-             parameters
-          });
+          request.contentType('application/json');
+          response.object = request.post(parameters);
         ]]>
       </execute>
     </select>
