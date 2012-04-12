@@ -22,7 +22,7 @@
           var authheader = "Basic "+y.crypto.encodeBase64(appKey+":"+masterSecret);
           var parameters = {};
           parameters.device_tokens = [device_tokens];
-          parameters.aps = {"alert": "message"}});
+          parameters.aps = {"alert": "message"};
           request.header("Authorization",authheader)
           response.object = request.post({
              action: request.url,
