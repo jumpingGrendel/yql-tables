@@ -18,13 +18,17 @@
         <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
       </inputs>
       <execute>
-        <![CDATA[ 
-          y.include("http://yqlblog.net/samples/base64.js"); 
-          var authheader = "Basic "+Base64.encode(appKey+":"+masterSecret);
-          var parameters = [];
-          parameters.push({"device_tokens": device_tokens});
-          parameters.push({"aps": {type: "message"}});
-          response.object = request.header("Authorization",authheader).post(parameters).response;
+        <![CDATA[
+          var authheader = "Basic "+y.crypto.encodeBase64(appKey+":"+masterSecret);
+          var parameters = {};
+          parameters.device_tokens = [device_tokens];
+          parameters.aps = {"alert": "message"}});
+          request.header("Authorization",authheader)
+          response.object = request.post({
+             action: request.url,
+             method: "POST",
+             data: parameters
+          });
         ]]>
       </execute>
     </select>
