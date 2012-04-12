@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+  <meta>
+    <author>John Greene</author>
+    <documentationURL>https://docs.urbanairship.com/display/DOCS/Server%3A+iOS+Push+API</documentationURL>
+    <sampleQuery>UPDATE {table} SET message='Hello, iOs user' WHERE deviceId='758327457457245724524' AND AppKey='392834082309' AND MasterSecret='8098098098'</sampleQuery>
+  </meta>
+  <bindings>
+    <update itemPath="" produces="XML">
+      <urls>
+        <url>https://go.urbanairship.com/api/push/</url>
+      </urls>
+      <inputs>
+        <key id="device_tokens" paramType="query" required="true" type="xs:string"/>
+        <key id="type" paramType="query" required="true" type="xs:string"/>
+        <key id="message" paramType="query" required="true" type="xs:string"/>
+        <key id="appKey" paramType="query" required="true" type="xs:string"/>
+        <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
+      </inputs>
+    </update>
+  </bindings>
+</table>
+
