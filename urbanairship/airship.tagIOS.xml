@@ -3,7 +3,7 @@
   <meta>
     <author>John Greene</author>
     <documentationURL>https://docs.urbanairship.com/display/DOCS/Server%3A+Tag+API</documentationURL>
-    <sampleQuery>insert into iospush (device_tokens, type, message) VALUES("4fff21f1e529328bafe1f0baa2bc411109c89ac6247b47eb2lklpoiu9ef73cd6", "alert", "hi there");</sampleQuery>
+    <sampleQuery>select * from iostag</sampleQuery>
   </meta>
   <bindings>
     <select itemPath="listTags" produces="JSON">
@@ -22,5 +22,22 @@
         ]]>
       </execute>
     </select>
+    <insert itemPath="listTags" produces="JSON">
+      <urls>
+        <url>https://go.urbanairship.com/api/tags/{tag}</url>
+      </urls>
+      <inputs>
+        <key id="appKey" paramType="query" required="true" type="xs:string"/>
+        <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
+        <key id="tag" paramType="query" required="true" type="xs:string"/>
+      </inputs>
+      <execute>
+        <![CDATA[
+          var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
+          request.header("Authorization",authheader);
+          response.object = request.put(tag);
+        ]]>
+      </execute>
+    </insert>
   </bindings>
 </table>
