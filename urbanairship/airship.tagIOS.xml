@@ -35,7 +35,7 @@
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
           request.header("Authorization",authheader);
-          response.object = request.put(tag);
+          response.object = request.put();
         ]]>
       </execute>
     </insert>
