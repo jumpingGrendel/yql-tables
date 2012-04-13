@@ -37,7 +37,7 @@
           var url = url + tag;
           response.object = request
            .header("Authorization", authheader)
-           .put().response;
+           .put(null).response;
         ]]>
       </execute>
     </insert>
