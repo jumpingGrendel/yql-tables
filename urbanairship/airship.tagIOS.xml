@@ -24,7 +24,7 @@
     </select>
     <insert itemPath="listTags" produces="JSON">
       <urls>
-        <url>https://go.urbanairship.com/api/tags/</url>
+        <url>https://go.urbanairship.com/api/tags/{tag}</url>
       </urls>
       <inputs>
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
@@ -37,7 +37,7 @@
           var url = url + tag;
           response.object = request
            .header("Authorization", authheader)
-           .put(url).response;
+           .put(null).response;
         ]]>
       </execute>
     </insert>
