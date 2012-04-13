@@ -36,9 +36,13 @@
             parameters.aps.badge = parseInt(badge);
           if(sound)
             parameters.aps.sound = sound;
-          request.header("Authorization",authheader);
-          request.contentType('application/json');
-          response.object = request.post(parameters);
+          if(device_tokens || aliases || tags) {
+            request.header("Authorization",authheader);
+            request.contentType('application/json');
+            response.object = request.post(parameters);
+          } else {
+            response.object = null;
+          }
         ]]>
       </execute>
     </insert>
