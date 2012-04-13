@@ -3,7 +3,7 @@
   <meta>
     <author>John Greene</author>
     <documentationURL>https://docs.urbanairship.com/display/DOCS/Server%3A+iOS+Push+API</documentationURL>
-    <sampleQuery>UPDATE {table} SET message='Hello, iOs user' WHERE deviceId='758327457457245724524' AND AppKey='392834082309' AND MasterSecret='8098098098'</sampleQuery>
+    <sampleQuery>insert into iospush (device_tokens, type, message) VALUES("4fff21f1e529328bafe1f0baa2bc411109c89ac6247b47eb2lklpoiu9ef73cd6", "alert", "hi there");</sampleQuery>
   </meta>
   <bindings>
     <insert itemPath="devices" produces="JSON">
@@ -19,12 +19,11 @@
       </inputs>
       <execute>
         <![CDATA[
-          var authheader = "Basic "+y.crypto.encodeBase64(appKey+":"+masterSecret);
+          var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
           var parameters = {};
           parameters.device_tokens = [device_tokens];
           parameters.aps = {};
           parameters.aps[type] = unescape(message);
-          
           request.header("Authorization",authheader);
           request.contentType('application/json');
           response.object = request.post(parameters);
