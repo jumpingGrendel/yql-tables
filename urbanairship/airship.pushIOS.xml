@@ -27,6 +27,8 @@
           parameters.aps.alert = unescape(message);
           if(badge) 
             parameters.aps.badge = parseInt(badge);
+          if(sound)
+            parameters.aps.sound = sound;
           request.header("Authorization",authheader);
           request.contentType('application/json');
           response.object = request.post(parameters);
