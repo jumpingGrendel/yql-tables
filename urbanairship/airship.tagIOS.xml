@@ -24,7 +24,7 @@
     </select>
     <insert itemPath="listTags" produces="JSON">
       <urls>
-        <url>https://go.urbanairship.com/api/tags/{tag}</url>
+        <url>https://go.urbanairship.com/api/tags/</url>
       </urls>
       <inputs>
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
@@ -34,6 +34,7 @@
       <execute>
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
+          request.url += tag;
           response.object = request
            .contentType("application/json")
            .header("Authorization", authheader)
