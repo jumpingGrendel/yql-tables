@@ -34,11 +34,10 @@
       <execute>
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
-          request.url += tag;
+          var url = request.url + tag;
           response.object = request
-           .contentType("application/json")
            .header("Authorization", authheader)
-           .put(null).response;
+           .put(url).response;
         ]]>
       </execute>
     </insert>
