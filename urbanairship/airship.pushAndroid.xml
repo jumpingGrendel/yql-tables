@@ -4,6 +4,7 @@
     <author>John Greene</author>
     <documentationURL>https://docs.urbanairship.com/display/DOCS/Server%3A+Android+Push+API</documentationURL>
     <sampleQuery>insert into androidpush (apids, message) VALUES("47ff153b-9194-48af-8ef5-4bd0ee55e17e", "hi there")</sampleQuery>
+    <sampleQuery>insert into androidpush (tags, message) VALUES("AndroidTestTag-4", "w00t!")</sampleQuery>
   </meta>
   <bindings>
     <insert itemPath="" produces="JSON">
