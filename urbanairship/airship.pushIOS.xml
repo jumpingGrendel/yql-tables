@@ -14,6 +14,8 @@
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
         <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
         <key id="device_tokens" paramType="query" required="false" type="xs:string"/>
+        <key id="aliases" paramType="query" required="false" type="xs:string"/>
+        <key id="tags" paramType="query" required="false" type="xs:string"/>
         <key id="message" paramType="query" required="true" type="xs:string"/>
         <key id="badge" paramType="query" required="false" type="xs:string"/>
         <key id="sound" paramType="query" required="false" type="xs:string"/>
@@ -22,7 +24,12 @@
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
           var parameters = {};
-          parameters.device_tokens = [device_tokens];
+          if(device_tokens)
+              parameters.device_tokens = device_tokens.split(',');
+          if(aliases)
+              parameters.aliases = aliases.split(',');
+          if(tags)
+              parameters.tags = tags.split(',');
           parameters.aps = {};
           parameters.aps.alert = unescape(message);
           if(badge) 
