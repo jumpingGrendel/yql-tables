@@ -39,7 +39,6 @@
           myRequest = y.rest(url);
           myRequest.header("Authorization", authheader);
           results = myRequest.put('').response;
-          response.object = results;
         ]]>
       </execute>
     </insert>
