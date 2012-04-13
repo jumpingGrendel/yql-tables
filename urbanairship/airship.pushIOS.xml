@@ -11,12 +11,12 @@
         <url>https://go.urbanairship.com/api/push/</url>
       </urls>
       <inputs>
-        <key id="device_tokens" paramType="query" required="true" type="xs:string"/>
-        <key id="type" paramType="query" required="true" type="xs:string"/>
-        <key id="message" paramType="query" required="true" type="xs:string"/>
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
         <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
+        <key id="device_tokens" paramType="query" required="false" type="xs:string"/>
+        <key id="message" paramType="query" required="true" type="xs:string"/>
         <key id="badge" paramType="query" required="false" type="xs:string"/>
+        <key id="sound" paramType="query" required="false" type="xs:string"/>
       </inputs>
       <execute>
         <![CDATA[
@@ -24,7 +24,7 @@
           var parameters = {};
           parameters.device_tokens = [device_tokens];
           parameters.aps = {};
-          parameters.aps[type] = unescape(message);
+          parameters.aps.alert = unescape(message);
           parameters.aps.badge = parseInt(badge);
           request.header("Authorization",authheader);
           request.contentType('application/json');
