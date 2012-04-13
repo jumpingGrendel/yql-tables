@@ -6,7 +6,7 @@
     <sampleQuery>select * from iostag</sampleQuery>
   </meta>
   <bindings>
-    <select itemPath="listTags" produces="JSON">
+    <select itemPath="json.tags" produces="XML">
       <urls>
         <url>https://go.urbanairship.com/api/tags/</url>
       </urls>
@@ -18,11 +18,12 @@
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
           request.header("Authorization",authheader);
-          response.object = request.get().tags;
+          var url = request.url;
+          response.object = y.rest(url).header("Authorization",authheader).accept('application/json').get().response;
         ]]>
       </execute>
     </select>
-    <insert itemPath="listTags" produces="JSON">
+    <insert itemPath="" produces="XML">
       <urls>
         <url>https://go.urbanairship.com/api/tags/{tag}</url>
       </urls>
@@ -34,12 +35,11 @@
       <execute>
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
-//          response.object = y.rest(request.url).header("Authorization", authheader).put('').response();
           url = "https://go.urbanairship.com/api/tags/" + tag;
           myRequest = y.rest(url);
           myRequest.header("Authorization", authheader);
           results = myRequest.put('').response;
-//          response.object = results;
+          response.object = {results: results};
         ]]>
       </execute>
     </insert>
