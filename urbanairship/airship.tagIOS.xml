@@ -4,6 +4,7 @@
     <author>John Greene</author>
     <documentationURL>https://docs.urbanairship.com/display/DOCS/Server%3A+Tag+API</documentationURL>
     <sampleQuery>select * from iostag</sampleQuery>
+    <sampleQuery>insert into iostag (tag) values ('elephant')</sampleQuery>
   </meta>
   <bindings>
     <select itemPath="json.tags" produces="XML">
