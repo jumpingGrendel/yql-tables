@@ -25,7 +25,7 @@
           parameters.device_tokens = [device_tokens];
           parameters.aps = {};
           parameters.aps[type] = unescape(message);
-          parameters.aps.badge = int(badge);
+          parameters.aps.badge = parseInt(badge);
           request.header("Authorization",authheader);
           request.contentType('application/json');
           response.object = request.post(parameters);
