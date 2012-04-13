@@ -6,7 +6,7 @@
     <sampleQuery>insert into iospush (device_tokens, type, message) VALUES("4fff21f1e529328bafe1f0baa2bc411109c89ac6247b47eb2lklpoiu9ef73cd6", "alert", "hi there");</sampleQuery>
   </meta>
   <bindings>
-    <insert itemPath="listTags" produces="JSON">
+    <select itemPath="listTags" produces="JSON">
       <urls>
         <url>https://go.urbanairship.com/api/tags/</url>
       </urls>
@@ -21,6 +21,6 @@
           response.object = request.get();
         ]]>
       </execute>
-    </insert>
+    </select>
   </bindings>
 </table>
