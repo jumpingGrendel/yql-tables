@@ -34,11 +34,12 @@
       <execute>
         <![CDATA[
           var authheader = "Basic " + y.crypto.encodeBase64(appKey + ":" + masterSecret);
-          response.object = y.rest(request.url).header("Authorization", authheader).put('').response();
+//          response.object = y.rest(request.url).header("Authorization", authheader).put('').response();
           url = "https://go.urbanairship.com/api/tags/" + tag;
           myRequest = y.rest(url);
           myRequest.header("Authorization", authheader);
           results = myRequest.put('').response;
+          response.object = results;
         ]]>
       </execute>
     </insert>
