@@ -37,7 +37,7 @@
           response.object = request
            .contentType("application/json")
            .header("Authorization", authheader)
-           .put().response;
+           .put(null).response;
         ]]>
       </execute>
     </insert>
