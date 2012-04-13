@@ -16,6 +16,7 @@
         <key id="message" paramType="query" required="true" type="xs:string"/>
         <key id="appKey" paramType="query" required="true" type="xs:string"/>
         <key id="masterSecret" paramType="query" required="true" type="xs:string"/>
+        <key id="badge" paramType="query" required="false" type="xs:string"/>
       </inputs>
       <execute>
         <![CDATA[
